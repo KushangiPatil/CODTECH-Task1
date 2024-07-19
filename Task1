@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="todo-app">
+        <h1>To-Do List</h1>
+        <input type="text" id="task" placeholder="Enter task">
+        <button id="add-task">Add Task</button>
+        <ul id="task-list"></ul>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+.todo-app
+ {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#task-list
+ {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#task-list li
+ {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+#task-list li:last-child
+ {
+    border-bottom: none;
+}
+const taskInput = document.getElementById('task');
+const addTaskBtn = document.getElementById('add-task');
+const taskList = document.getElementById('task-list');
+
+addTaskBtn.addEventListener('click', addTask);
+
+function addTask() 
+{
+    const task = taskInput.value.trim();
+    if (task) {
+        const li = document.createElement('li');
+        li.textContent = task;
+        taskList.appendChild(li);
+        taskInput.value = '';
+    }
+}
